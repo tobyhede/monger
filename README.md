@@ -330,7 +330,37 @@ To be documented.
 
 ## Database Commands
 
-To be documented.
+Commands can be executed directly using monger.core/command, passing a hash of command parameters.
+Commands return a seq. 
+
+``` clojure
+(monger.core/command database { :collstats "my-collection" })
+``` 
+
+In addition there are several convenience functions available in the monger.command namespace.
+
+
+``` clojure
+(monger.command/server-status)
+
+(monger.command/db-stats)
+
+(monger.command/collection-stats "my-collection")
+
+(monger.command/reindex-collection "my-collection")
+
+(monger.command/top)
+
+``` 
+
+The success of a command can be tested using ok?
+
+``` clojure
+(monger.result/ok? result)
+``` 
+
+Please see the MongoDB documentation for more details - [List of Database Commands](http://www.mongodb.org/display/DOCS/List+of+Database+Commands)
+
 
 
 ## GridFS Support
